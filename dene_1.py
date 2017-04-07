@@ -9,10 +9,11 @@ def create_table():
     conn.commit()
     conn.close()
 
-def view_data():
+def view_data(table_name):
     conn = sqlite3.connect('lite.db')
     cur = conn.cursor()
-    cur.execute("SELECT * FROM kitap")
+    #cur.execute("SELECT * FROM {tn}".format(tn=table_name))
+    cur.execute("SELECT * FROM yazar_ad")
     rows = cur.fetchall()
     conn.close()
     return rows
@@ -45,11 +46,21 @@ def delete_table(table_name):
     conn = sqlite3.connect('lite.db')
     cur = conn.cursor()
     cur.execute("DROP TABLE {tn}".format(tn=table_name))
+    conn.commit()
+    conn.close()
+def rec_yazar(yazar_id,yazar_ad)
+    conn = sqlite3.connect('lite.db')
+    cur = conn.cursor()
+    cur.execute("INSERT INTO yazar_tablo VALUES(?,?) ",(yazar_id,yazar_ad))
+    conn.commit()
+    conn.close()
+
 # delete_table("kitap")
 create_table()
-create_table_yazar()
+# create_table_yazar()
 # insert_data(2,"susuz yaz",25,10.0)
 # delete_data("vadideki zambak")
 #update_data('ÖZGÜR YAZILIM',25,50.0)
-
-print(view_data())
+rec_yazar(1,"yasar kemal")
+rec_yazar(2,"nihal atsiz")
+print(view_data(yazar_tablo))
