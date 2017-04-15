@@ -1,5 +1,4 @@
 import psycopg2
-import psycopg2
 # conn = psycopg2.connect('lite.db')
 # cur = conn.cursor()
 # cur.execute('pragma foreign_keys=ON')
